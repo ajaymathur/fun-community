@@ -11,25 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-
-export default class FunCommunity extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
-}
+import App from './app/app';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('FunCommunity', () => FunCommunity);
+AppRegistry.registerComponent('FunCommunity', () => App);
