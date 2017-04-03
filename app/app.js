@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UpComingBirthdays from "./components/upComingBirthdays";
-import Suggestions from './components/suggestions';
+import Budget from './components/budget';
 import { TabNavigator } from "react-navigation";
 
 
@@ -9,8 +9,8 @@ export default TabNavigator(
     Home: {
       screen: UpComingBirthdays
     },
-    Suggestions: {
-      screen: Suggestions
+    Budget: {
+      screen: Budget
     },
   },
   {
