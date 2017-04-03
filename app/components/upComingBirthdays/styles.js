@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   header: {
-    height: 80,
+    height: (Platform.OS === 'ios') ? 80 : 50,
     backgroundColor: '#1252Fb',
-    paddingTop: 40,
+    paddingTop: (Platform.OS === 'ios') ? 40 : 10,
   },
   seachBox: {
     backgroundColor: '#1252ff',

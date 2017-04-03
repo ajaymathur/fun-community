@@ -6,13 +6,12 @@ import { TabNavigator } from "react-navigation";
 
 export default TabNavigator(
   {
-     Home: {
+    Home: {
       screen: UpComingBirthdays
     },
     Suggestions: {
       screen: Suggestions
-    }
-    
+    },
   },
   {
     tabBarOptions: {

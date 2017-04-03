@@ -7,6 +7,7 @@ class AddSuggestions extends Component{
     return(
       <View style={styles.Component}>
         <TextInput
+          placeholder="Suggestion are welcome"
           style={styles.TextInput}
         />
         <TouchableHighlight
