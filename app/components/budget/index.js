@@ -10,11 +10,11 @@ import { suggestionsRef, auth, provider } from '../../store/firebase.confidentia
 
 import { forEach } from 'lodash';
 
-class Suggestions extends Component{
+class Budget extends Component{
 
   static navigationOptions = {
     tabBar: {
-      label: 'Suggestions',
+      label: 'Budget',
      
     },
   }
@@ -81,4 +81,4 @@ class Suggestions extends Component{
   }
 }
 
-export default Suggestions;
+export default Budget;
