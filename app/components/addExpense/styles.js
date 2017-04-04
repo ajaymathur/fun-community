@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
    flexDirection: 'row',
    alignItems: 'center',
   },
+  TextInputAmount:{
+    flex: 1,
+  },
   TextInput: {
     flex: 4,
   },
