@@ -5,13 +5,42 @@ const style = StyleSheet.create({
     height: (Platform.OS === 'ios') ? 80 : 50,
     backgroundColor: '#1252Fb',
     paddingTop: (Platform.OS === 'ios') ? 40 : 10,
+    flex: 1,
+    flexDirection: 'row',
+  },
+  subHeader:{
+    flex: 1,
+    alignItems: 'center',
   },
   headingtext: {
     color: '#fff',
   },
   addExpense: {
+    padding: 5,
+  },
+  list: {
     flex: 1,
-  }
+    margin: 5,
+    borderColor: '#c2c2c2',
+    borderWidth: 2,
+  },
+  listHeader: {
+    backgroundColor: '#c2c2c2',
+    padding: 10,
+  },
+  listItem: {
+    padding: 10,
+  },
+  listFooter: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  listFooterButton: {
+    alignItems: 'center',
+    flex: 1,
+    backgroundColor: '#c2c2c2',
+    padding: 5,
+  },
 });
 
 export default style;

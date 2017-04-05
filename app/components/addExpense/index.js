@@ -15,6 +15,10 @@ class AddExpense extends Component{
 
   addExpenceTriggered() {
     this.props.addExpense(this.state.amount, this.state.item);
+    this.setState({
+      amount: '',
+      item: '',
+    });
   }
 
   render() {
@@ -24,17 +28,19 @@ class AddExpense extends Component{
         <TextInput
           placeholder="0.00"
           style={styles.TextInputAmount}
+          value={this.state.amount}
           onChangeText={(amount) => this.setState({amount})}
         />
         <Text> for </Text>
         <TextInput
           placeholder="Item"
           style={styles.TextInput}
+          value={this.state.item}
           onChangeText={(item) => this.setState({item})}
         />
         <TouchableHighlight
           style={styles.Button}
-          onPress={this.addExpenceTriggered()}
+          onPress={this.addExpenceTriggered}
         >
           <Text>Add</Text>
         </TouchableHighlight>
