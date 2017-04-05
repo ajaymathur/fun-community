@@ -17,8 +17,8 @@ class UpComingBirthdays extends Component{
   constructor(props) {
     super(props);
     this.state = {
-    filteredData: [],
-    dataSource: new ListView.DataSource({
+      filteredData: [],
+      dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       })
     };
@@ -30,8 +30,8 @@ class UpComingBirthdays extends Component{
   componentWillMount() {
     // birthdayRef.push().set({
     //   date: '03',
-    //   name: 'ajay2',
-    //   month: '3',
+    //   name: 'Grace',
+    //   month: '2',
     // })
     birthdayRef.on('value', (snap) => {
       let items = [];
