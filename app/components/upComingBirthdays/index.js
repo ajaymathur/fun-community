@@ -29,9 +29,9 @@ class UpComingBirthdays extends Component{
 
   componentWillMount() {
     // birthdayRef.push().set({
-    //   date: '03',
-    //   name: 'Grace',
-    //   month: '2',
+    //   date: '02',
+    //   name: 'Pragya',
+    //   month: '8',
     // })
     birthdayRef.on('value', (snap) => {
       let items = [];
