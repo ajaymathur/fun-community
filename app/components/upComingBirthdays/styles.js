@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   listTitle: {
     flexDirection: 'row',
-    backgroundColor: '#5486ff',
+    backgroundColor: '#29f',
     height: 30,
     alignItems: 'center',
     paddingLeft: 10,
