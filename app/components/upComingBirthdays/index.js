@@ -29,9 +29,9 @@ class UpComingBirthdays extends Component{
 
   componentWillMount() {
     // birthdayRef.push().set({
-    //   date: '02',
-    //   name: 'Pragya',
-    //   month: '8',
+    //   date: '27',
+    //   name: 'Anvi Mathur',
+    //   month: '6',
     // })
     birthdayRef.on('value', (snap) => {
       let items = [];
@@ -47,7 +47,6 @@ class UpComingBirthdays extends Component{
         filteredData: clone(items),
         completeSource: clone(snap.val()),
       });
-      //console.log(birthdays);
     });
   }
 

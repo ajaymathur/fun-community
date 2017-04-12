@@ -5,11 +5,12 @@ const style = StyleSheet.create({
     height: (Platform.OS === 'ios') ? 80 : 50,
     backgroundColor: '#1252Fb',
     paddingTop: (Platform.OS === 'ios') ? 40 : 10,
-    flex: 1,
+    //flex: 1,
     flexDirection: 'row',
   },
   subHeader:{
     flex: 1,
+    height: (Platform.OS === 'ios') ? 50 : 30,
     alignItems: 'center',
   },
   headingtext: {
@@ -21,11 +22,11 @@ const style = StyleSheet.create({
   list: {
     flex: 1,
     margin: 5,
-    borderColor: '#c2c2c2',
+    borderColor: '#29f',
     borderWidth: 2,
   },
   listHeader: {
-    backgroundColor: '#c2c2c2',
+    backgroundColor: '#29f',
     padding: 10,
   },
   listItem: {
@@ -38,7 +39,7 @@ const style = StyleSheet.create({
   listFooterButton: {
     alignItems: 'center',
     flex: 1,
-    backgroundColor: '#c2c2c2',
+    backgroundColor: '#29f',
     padding: 5,
   },
 });
