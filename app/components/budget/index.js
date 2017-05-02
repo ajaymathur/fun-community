@@ -83,7 +83,6 @@ class Budget extends Component{
   pullExpenditure() {
     let expenseStructured;
     expenditureRef.on('value', snap => {
-      console.log(snap);
       if (!snap) {
         console.log('offline');
       }
