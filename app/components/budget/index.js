@@ -44,13 +44,13 @@ class Budget extends Component{
     this.amountCollected();
     this.isUserLoggedIn();
     this.bindAuthChangeEvent();
-    auth.signOut();
+    //auth.signOut();
   }
 
-  login(email, password) {
-    auth.signInWithEmailAndPassword(email, password)
+  async login(email, password) {
+    await auth.signInWithEmailAndPassword(email, password)
         .catch(error => {
-          return true;
+          throw new Error(error);
         });
     this.setState({
       loginModalVisible: false,
@@ -83,6 +83,10 @@ class Budget extends Component{
   pullExpenditure() {
     let expenseStructured;
     expenditureRef.on('value', snap => {
+      console.log(snap);
+      if (!snap) {
+        console.log('offline');
+      }
       expenseStructured = [];
       snap.forEach(expense => {
         expenseStructured.push({
@@ -94,7 +98,7 @@ class Budget extends Component{
       this.setState({
         expenses: expenseStructured.reverse(),
       })
-    });
+    })
   }
 
   addExpense(amount, itemName) {

@@ -6,7 +6,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 10,
     },
-    textBox: {
+    errorMessage: {
+        color: 'red',
+        marginBottom:15,
     },
 })
 
