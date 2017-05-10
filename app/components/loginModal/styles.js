@@ -8,8 +8,11 @@ const styles = StyleSheet.create({
     },
     errorMessage: {
         color: 'red',
-        marginBottom:15,
+        marginBottom:15
     },
+    inputBox: {
+        left: -15,
+    }
 })
 
 export default styles;

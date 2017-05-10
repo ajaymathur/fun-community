@@ -91,6 +91,7 @@ class Budget extends Component{
         expenseStructured.push({
           amount: expense.val().amount,
           itemName: expense.val().itemName,
+          addedBy: expense.val().addedBy,
           key: expense.key
         });
       });
@@ -104,6 +105,7 @@ class Budget extends Component{
     expenditureRef.push().set({
       amount,
       itemName,
+      addedBy: auth.currentUser.email,
     });
   }
 
@@ -136,7 +138,7 @@ class Budget extends Component{
   renderExpenseList(rowData) {
     return <View style={style.list} key={rowData.key}>
       <View style={style.listHeader}>
-        <Text>{rowData.itemName}</Text>
+        <Text>{rowData.itemName} - {rowData.addedBy}</Text>
       </View>
       <View style={style.listItem}>
         <Text>${rowData.amount}</Text>

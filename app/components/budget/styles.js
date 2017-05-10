@@ -17,7 +17,6 @@ const style = StyleSheet.create({
     color: '#fff',
   },
   addExpense: {
-    padding: 5,
   },
   list: {
     flex: 1,
