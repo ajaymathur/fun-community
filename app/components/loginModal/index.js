@@ -14,7 +14,6 @@ class Login extends Component {
       userLeft: new Animated.Value(0),
       passwordLeft: new Animated.Value(0),
     };
-    this.initiateLogin = this.initiateLogin.bind(this);
   }
 
   startAnimationUserName() {
@@ -145,7 +144,7 @@ class Login extends Component {
         {this.getPasswordError()}
         <Button
           title="Login"
-          onPress={ this.initiateLogin }
+          onPress={() => this.initiateLogin() }
         />
       </Animated.View>
     )

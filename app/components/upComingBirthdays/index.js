@@ -22,20 +22,20 @@ class UpComingBirthdays extends Component{
         rowHasChanged: (row1, row2) => row1 !== row2,
       })
     };
-    this.renderListData = this.renderListData.bind(this);
     this.getFilteredData = this.getFilteredData.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
   }
 
   componentWillMount() {
     // birthdayRef.push().set({
-    //   date: '27',
+    //   date: '25',
     //   name: 'Anvi Mathur',
     //   month: '6',
     // })
     birthdayRef.on('value', (snap) => {
       let items = [];
       let birthdays = groupBy( snap.val(), 'month' );
+      console.log(birthdays);
       forEach(birthdays, (birthday, month) => {
         items.push({
           title: months[month],
@@ -52,13 +52,13 @@ class UpComingBirthdays extends Component{
 
   componentDidMount() {
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows({'dummy': {date: '03', name: 'ajay2', month: '3'}})
+      dataSource: this.state.dataSource.cloneWithRows({'dummy': {date: '03', firstName: 'ajay2', month: '3'}})
     })
   }
 
   getListElements(rowData) {
     let listItems = [];
-    forEach(rowData.birthdays, bit => listItems.push(<View key={bit.name+bit.date} style={styles.listItem}><Text>{bit.date} | {bit.name}</Text></View>));
+    forEach(rowData.birthdays, bit => listItems.push(<View key={bit.firstName+bit.date} style={styles.listItem}><Text>{bit.date} | {bit.firstName}</Text></View>));
     return listItems;
   }
 
@@ -79,7 +79,7 @@ class UpComingBirthdays extends Component{
 
   updateFilter(text) {
     let items =[];
-    let temp =  filter(this.state.completeSource, item => item.name && item.name.toLowerCase().indexOf(text.toLowerCase()) > -1);
+    let temp =  filter(this.state.completeSource, item => item.firstName && item.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1);
     console.log(temp);
     console.log(text);
     let birthdays = groupBy( temp, 'month' );
@@ -97,7 +97,7 @@ class UpComingBirthdays extends Component{
 
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         <View style={styles.header}>
           <TextInput
             style={styles.seachBox}

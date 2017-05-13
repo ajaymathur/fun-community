@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
    flexDirection: 'row',
    padding: 5,
    alignItems: 'center',
+   height: 50,
   },
   Button:{
     flex: 1,

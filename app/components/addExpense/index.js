@@ -12,9 +12,6 @@ class AddExpense extends Component{
       amountLeft: new Animated.Value(0),
       itemLeft: new Animated.Value(0),
      };
-    this.addExpenceTriggered = this.addExpenceTriggered.bind(this);
-    this.amountStyle = this.amountStyle.bind(this);
-    this.itemStyle = this.itemStyle.bind(this);
   }
 
   animateAmount() {
@@ -116,7 +113,7 @@ class AddExpense extends Component{
         </Animated.View>
         <TouchableHighlight
           style={styles.Button}
-          onPress={this.addExpenceTriggered}
+          onPress={()=>this.addExpenceTriggered()}
         >
           <Text>Add</Text>
         </TouchableHighlight>

@@ -19,24 +19,15 @@ class Budget extends Component{
     },
   }
 
-  state = {
-    totalAmount : '0.00',
-    expenses: [],
-    loggedIn: false,
-    loginModalVisible: false,
-  }
-
   constructor( props ) {
     super( props );
-    this.getAmountLeft = this.getAmountLeft.bind(this);
-    this.pullExpenditure = this.pullExpenditure.bind(this);
-    this.addExpense = this.addExpense.bind(this);
-    this.renderExpenseList = this.renderExpenseList.bind(this);
-    this.amountCollected = this.amountCollected.bind(this);
-    this.isUserLoggedIn = this.isUserLoggedIn.bind(this);
+    this.state = {
+      totalAmount : '0.00',
+      expenses: [],
+      loggedIn: false,
+      loginModalVisible: false,
+    };
     this.login = this.login.bind(this);
-    this.bindAuthChangeEvent = this.bindAuthChangeEvent.bind(this);
-    this.setModalVisible = this.setModalVisible.bind(this);
   }
 
   componentWillMount() {
@@ -182,14 +173,17 @@ class Budget extends Component{
             renderRow={(rowData) => this.renderExpenseList(rowData)}
           />
         </View>
+        <View style={{height: 50}}>
           {this.state.loggedIn ? <AddExpense
-              addExpense = {this.addExpense}
-              style={style.addExpense}
-            /> : <Button
-              title='login'
-              onPress={this.setModalVisible}
-            />
-          }
+                addExpense = {this.addExpense}
+                style={style.addExpense}
+              /> : <Button
+                title='login'
+                onPress={() => this.setModalVisible()}
+              />
+            }
+        </View>
+          
           <Modal
             animationType='slide'
             visible={!!this.state.loginModalVisible}

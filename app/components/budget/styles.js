@@ -5,7 +5,6 @@ const style = StyleSheet.create({
     height: (Platform.OS === 'ios') ? 80 : 50,
     backgroundColor: '#1252Fb',
     paddingTop: (Platform.OS === 'ios') ? 40 : 10,
-    //flex: 1,
     flexDirection: 'row',
   },
   subHeader:{
@@ -17,9 +16,10 @@ const style = StyleSheet.create({
     color: '#fff',
   },
   addExpense: {
+    height: 20,
+    flex: 1,
   },
   list: {
-    flex: 1,
     margin: 5,
     borderColor: '#29f',
     borderWidth: 2,
