@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles';
 
-import { View, TextInput, Button, Text, Animated, Easing } from 'react-native';
+import { View, TextInput, Button, Text, Animated, Easing, Image } from 'react-native';
 
 class Login extends Component {
   constructor(props) {
@@ -108,8 +108,6 @@ class Login extends Component {
     }
 
     if ( !(this.state.userNameError || this.state.passwordError) ) {
-      console.log(this.state.userName);
-      console.log(this.state.password);
        this.props.login( this.state.userName, this.state.password)
        .catch(error => {
          this.startAnimationPassword();
@@ -123,8 +121,11 @@ class Login extends Component {
 
   render() {
     return (
-      <Animated.View style={styles.loginPanel}>
-        <Text>Login</Text>
+      <View style={styles.loginPanel}>
+         <Image
+          style={{width: 50, height: 50}}
+          source={require('./assets/logo.png')}
+        />
         <Animated.View style={{left: this.state.userLeft}}>
         <TextInput
           placeholder="Username"
@@ -146,7 +147,7 @@ class Login extends Component {
           title="Login"
           onPress={() => this.initiateLogin() }
         />
-      </Animated.View>
+      </View>
     )
   }
 }

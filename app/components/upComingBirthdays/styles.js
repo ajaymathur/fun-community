@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
   },
   seachBox: {
     backgroundColor: '#1252ff',
-    flex: 1,
     color: '#fff',
     paddingLeft: 5,
     borderColor: '#c2c2ff'

@@ -1,11 +1,11 @@
 // @flow
 
 import React, { Component } from 'react';
-import { View, Text, ListView, ScrollView, Button, TextInput } from 'react-native';
+import { View, Text, ListView, ScrollView, Button, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 import styles from './styles';
 import { birthdayRef } from '../../store/firebase.confidential';
-import { forEach, clone, filter, groupBy, flattenDeep } from 'lodash';
+import { forEach, clone, filter, groupBy, flattenDeep, padStart, sortBy } from 'lodash';
 import { months } from './constants';
 
 class UpComingBirthdays extends Component{
@@ -18,8 +18,10 @@ class UpComingBirthdays extends Component{
     super(props);
     this.state = {
       filteredData: [],
+      loading: true,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
+        sectionHeaderHasChanged: (s1, s2) => s1 !== s2
       })
     };
     this.getFilteredData = this.getFilteredData.bind(this);
@@ -27,15 +29,9 @@ class UpComingBirthdays extends Component{
   }
 
   componentWillMount() {
-    // birthdayRef.push().set({
-    //   date: '25',
-    //   name: 'Anvi Mathur',
-    //   month: '6',
-    // })
     birthdayRef.on('value', (snap) => {
       let items = [];
-      let birthdays = groupBy( snap.val(), 'month' );
-      console.log(birthdays);
+      let birthdays = groupBy( sortBy(snap.val(), 'date'), 'month' );
       forEach(birthdays, (birthday, month) => {
         items.push({
           title: months[month],
@@ -46,6 +42,7 @@ class UpComingBirthdays extends Component{
       this.setState({
         filteredData: clone(items),
         completeSource: clone(snap.val()),
+        loading: false
       });
     });
   }
@@ -58,7 +55,7 @@ class UpComingBirthdays extends Component{
 
   getListElements(rowData) {
     let listItems = [];
-    forEach(rowData.birthdays, bit => listItems.push(<View key={bit.firstName+bit.date} style={styles.listItem}><Text>{bit.date} | {bit.firstName}</Text></View>));
+    forEach(rowData.birthdays, bit => listItems.push(<View key={bit.firstName+bit.date} style={styles.listItem}><Text>{padStart(bit.date,2,0)} | {bit.firstName}{bit.lastName}</Text></View>));
     return listItems;
   }
 
@@ -80,8 +77,6 @@ class UpComingBirthdays extends Component{
   updateFilter(text) {
     let items =[];
     let temp =  filter(this.state.completeSource, item => item.firstName && item.firstName.toLowerCase().indexOf(text.toLowerCase()) > -1);
-    console.log(temp);
-    console.log(text);
     let birthdays = groupBy( temp, 'month' );
     forEach(birthdays, (birthday, month) => {
       items.push({
@@ -95,6 +90,16 @@ class UpComingBirthdays extends Component{
     });
   }
 
+  showLoader() {
+    if ( this.state.loading )
+    return <ActivityIndicator
+            animating={true}
+            style={{height: 80}}
+            size="large"
+            color="#004aff"
+          />
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -103,10 +108,13 @@ class UpComingBirthdays extends Component{
             style={styles.seachBox}
             placeholder="Search birthday"
             placeholderTextColor= "#fff"
+            returnKeyType="search"
             onChangeText={(text) => {this.updateFilter(text)}}
           />
         </View>
         <View>
+          
+          {this.showLoader()}
           <ListView
             enableEmptySections={true}
             dataSource={this.getFilteredData()}

@@ -1,7 +1,7 @@
 // @flow
 
 import React, { Component } from 'react';
-import { ScrollView, View, Text, Button, ListView, TouchableHighlight, Modal } from 'react-native';
+import { ScrollView, View, Text, Button, ListView, TouchableHighlight, Modal, ActivityIndicator } from 'react-native';
 import AddExpense from '../addExpense';
 import Login from '../loginModal';
 import style from './styles';
@@ -26,6 +26,7 @@ class Budget extends Component{
       expenses: [],
       loggedIn: false,
       loginModalVisible: false,
+      loading: true,
     };
     this.login = this.login.bind(this);
   }
@@ -88,6 +89,7 @@ class Budget extends Component{
       });
       this.setState({
         expenses: expenseStructured.reverse(),
+        loading: false,
       })
     })
   }
@@ -153,6 +155,16 @@ class Budget extends Component{
     </View>
   }
 
+  showLoader() {
+    if ( this.state.loading )
+    return <ActivityIndicator
+            animating={true}
+            style={{height: 80}}
+            size="large"
+            color="#004aff"
+          />
+  }
+
   render() {
     return (
       <View style={{flex: 1}}>
@@ -166,6 +178,7 @@ class Budget extends Component{
             <Text style={style.headingtext}>$ {this.getAmountLeft()}</Text>
           </View>
         </View>
+        {this.showLoader()}
         <View style={{flex: 4}}>
           <ListView
             enableEmptySections={true}
