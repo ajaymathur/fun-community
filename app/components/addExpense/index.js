@@ -61,9 +61,9 @@ class AddExpense extends Component{
   }
 
   addExpenceTriggered() {
-    let amount = this.state.amount.replace(/[^\d]/g, '');
+    let amount = /^\d+(\.\d{1,2})?$/.test(this.state.amount);
     let item = this.state.item;
-    if ( !amount.trim() ) {
+    if ( !amount) {
       this.animateAmount();
     } else if ( !item.trim() ) {
       this.animateItem();
