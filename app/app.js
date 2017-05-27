@@ -12,14 +12,18 @@ export default TabNavigator(
     Budget: {
       screen: Budget
     },
-    
-    
   },
   {
+    lazy: true,
     tabBarOptions: {
       style: {
         backgroundColor: '#004aff',
-      }
+      },
+      indicatorStyle: {
+        backgroundColor: '#3595ff',
+      },
+      showIcon: true,
+      showLabel: false,
     }
   }
 );

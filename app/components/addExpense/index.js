@@ -122,4 +122,8 @@ class AddExpense extends Component{
   }
 }
 
+AddExpense.PropTypes = {
+  addExpense: React.PropTypes.func.isRequired
+};
+
 export default AddExpense;

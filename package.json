@@ -1,24 +1,25 @@
 {
-	"name": "fun-community",
-	"version": "0.0.1",
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
-	},
-	"dependencies": {
-		"firebase": "^3.7.3",
-		"lodash": "^4.17.4",
-		"react": "~15.4.1",
-		"react-native": "0.42.3",
-		"react-navigation": "^1.0.0-beta.7"
-	},
-	"devDependencies": {
-		"babel-jest": "19.0.0",
-		"babel-preset-react-native": "1.9.1",
-		"jest": "19.0.2",
-		"react-test-renderer": "~15.4.1"
-	},
-	"jest": {
-		"preset": "react-native"
-	}
+  "name": "fun-community",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "firebase": "^3.7.3",
+    "lodash": "^4.17.4",
+    "react": "~15.4.1",
+    "react-native": "0.42.3",
+    "react-native-vector-icons": "^4.1.1",
+    "react-navigation": "^1.0.0-beta.7"
+  },
+  "devDependencies": {
+    "babel-jest": "19.0.0",
+    "babel-preset-react-native": "1.9.1",
+    "jest": "19.0.2",
+    "react-test-renderer": "~15.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
 }
