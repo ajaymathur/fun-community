@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles';
 
-import { View, TextInput, Button, Text, Animated, Easing, Image } from 'react-native';
+import { View, TextInput, Button, Text, Animated, Image } from 'react-native';
 
 class Login extends Component {
   constructor(props) {
@@ -151,5 +151,9 @@ class Login extends Component {
     )
   }
 }
+
+Login.PropTypes = {
+  login: React.PropTypes.func.isRequired,
+};
 
 export default Login;

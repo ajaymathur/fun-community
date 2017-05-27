@@ -5,18 +5,18 @@ import { ScrollView, View, Text, Button, ListView, TouchableHighlight, Modal, Ac
 import AddExpense from '../addExpense';
 import Login from '../loginModal';
 import style from './styles';
-
+import Loader from '../loader';
 import { forEach } from 'lodash';
 import { expenditureRef, totalAmountRef, auth } from '../../store/firebase.confidential';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 let ds = new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 });
 
 class Budget extends Component{
 
   static navigationOptions = {
-    tabBar: {
-      label: 'Budget',
-    },
+    title: 'Budget',
+    tabBarIcon: () => <Icon name="money"></Icon>,
   }
 
   constructor( props ) {
@@ -143,26 +143,13 @@ class Budget extends Component{
             <Text>Delete</Text>
           </TouchableHighlight>
           </View>
-        : 
+        :
         <View style={style.listFooter}>
-          <View 
-            style={style.listFooterButton} >
-            <Text>Please Login to Edit</Text>
-          </View>
+
           </View>
       }
     
     </View>
-  }
-
-  showLoader() {
-    if ( this.state.loading )
-    return <ActivityIndicator
-            animating={true}
-            style={{height: 80}}
-            size="large"
-            color="#004aff"
-          />
   }
 
   render() {
@@ -178,7 +165,9 @@ class Budget extends Component{
             <Text style={style.headingtext}>$ {this.getAmountLeft()}</Text>
           </View>
         </View>
-        {this.showLoader()}
+        <Loader
+          showLoader={this.state.loading}
+        />
         <View style={{flex: 4}}>
           <ListView
             enableEmptySections={true}
@@ -196,10 +185,9 @@ class Budget extends Component{
               />
             }
         </View>
-          
           <Modal
             animationType='slide'
-            visible={!!this.state.loginModalVisible}
+            visible={this.state.loginModalVisible}
             onRequestClose={() => this.setModalVisible(false)}
             supportedOrientations={['portrait']}
           >
