@@ -6,7 +6,7 @@ import { TabNavigator } from "react-navigation";
 
 export default TabNavigator(
   {
-    Home: {
+    Birthday: {
       screen: UpComingBirthdays
     },
     Budget: {
