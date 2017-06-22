@@ -16,7 +16,7 @@ class UpComingBirthdays extends Component{
 
   static navigationOptions = {
     title: 'Birthdays',
-    tabBarIcon: () => <Icon name="birthday-cake"></Icon>
+    tabBarIcon: () => <Icon name="birthday-cake" style={{color: '#FFFFFF'}}></Icon>
   };
 
   constructor(props) {
