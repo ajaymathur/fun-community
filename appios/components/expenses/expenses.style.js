@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
     margin: 5,
     borderWidth: 1,
     borderColor: '#ededed',
+    display: 'flex',
+    flexDirection: 'row',
   },
   expenseBlockHeader: {
    padding: 5,
@@ -19,6 +21,13 @@ const styles = StyleSheet.create({
   expenseBlockDeleteButton: {
     backgroundColor: '#ff0000',
     padding: 10,
+  },
+  receiptImage: {
+    height: 50, 
+    width: 50, 
+    resizeMode: 'cover',
+    margin: 10,
+    borderRadius: 25,
   }
 });
 

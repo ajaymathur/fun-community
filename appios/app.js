@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import styles from './components/addButton/addButton.style';
-import { TabNavigator, StackNavigator } from "react-navigation";
+import { TabNavigator, StackNavigator, StackRouter } from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Birthdays from './components/birthdays/birthdays';
 import Expense from './components/expenses/expenses';
 import AddButton from './components/addButton/addButton';
 import AddExpense from './components/addExpense/addExpense';
+import ExpenseDetail from './components/expenseDetails/expenseDetails';
 const BIRTHDAY_NAVIGATOR = StackNavigator(
   {
     BirthdayList: {
@@ -22,29 +23,21 @@ const BIRTHDAY_NAVIGATOR = StackNavigator(
 const EXPENSE_NAVIGATOR = StackNavigator(
   {
 
+
     ExpenseList: {
       screen: Expense,
       path: 'expence',
       navigationOptions: ({ navigation }) => ({
         title: 'Expense',
-        headerRight: <View style={styles.button}>
+        headerRight: <View>
           <TouchableOpacity
             onPress={() => navigation.navigate('AddExpense')}
+            style={styles.button}
           >
             <Icon name="plus" style={{ color: '#4e4e4e' }}></Icon>
           </TouchableOpacity>
         </View>
       }),
-
-      //{
-      //title: 'Expense',
-      //headerRight: <AddButton {...this.props} />
-      // header: ({ navigate }) => ({
-      //   right: (
-      //     <AddButton navigate={navigate} />
-      //   ),
-      // }),
-      //}
     },
     AddExpense: {
       screen: AddExpense,
@@ -53,7 +46,13 @@ const EXPENSE_NAVIGATOR = StackNavigator(
         title: 'How much did you spend?'
       }
     },
-
+    ExpenseDetail: {
+      screen: ExpenseDetail,
+      path: 'expence/detail',
+      navigationOptions: {
+        title: 'Detail'
+      }
+    },
   }
 );
 
@@ -78,7 +77,6 @@ export default TabNavigator(
 
   },
   {
-    swipeEnabled: true,
     lazy: true,
     tabBarOptions: {
       style: {

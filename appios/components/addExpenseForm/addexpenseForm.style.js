@@ -1,0 +1,33 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+	heading: {
+		fontSize: 40,
+		margin: 10,
+	},
+	TextInput: {
+		height: 40,
+		borderBottomWidth: 4,
+		padding: 4,
+		margin: 10,
+		borderColor: '#000000'
+	},
+	loginButton: {
+		backgroundColor: '#f1f1f1',
+		height: 40,
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		margin: 10,
+		borderRadius: 10,
+	},
+	image: {
+		height: 80,
+    width: 80,
+		resizeMode: 'cover',
+    borderRadius: 40,
+    margin: 10,
+	},
+});
+
+export default styles;

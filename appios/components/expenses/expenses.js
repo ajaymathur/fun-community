@@ -3,7 +3,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  FlatList
+  FlatList,
+  Image
 } from 'react-native';
 import styles from './expenses.style';
 /**firebase imports */
@@ -41,7 +42,8 @@ class Expense extends Component {
           amount: expense.val().amount,
           itemName: expense.val().itemName,
           addedBy: expense.val().addedBy,
-          key: expense.key
+          key: expense.key,
+          imageUrl: expense.val().imageUrl
         });
       });
       this.setState({
@@ -51,11 +53,40 @@ class Expense extends Component {
   }
 
   getlistItems = ({ item }) => (
-    <View key={item.key} style={styles.expenseBlock}>
-      <View style={styles.expenseBlockHeader}>
+    <TouchableOpacity
+      key={item.key}
+      style={styles.expenseBlock}
+      onPress={() => { this.props.navigation.navigate('ExpenseDetail', {item : item}) }}
+    >
+      <View>
+        <Image
+          source={{ uri: item.imageUrl }}
+          style={styles.receiptImage}
+        />
+      </View>
+      <View>
+        <View>
+          <Text>{item.itemName}</Text>
+        </View>
+        <View>
+          <Text>${item.amount}</Text>
+        </View>
+        <View>
+          <Text>{item.addedBy}</Text>
+        </View>
+      </View>
+
+
+      {/*<View style={styles.expenseBlockHeader}>
         <Text>{item.itemName}</Text>
       </View>
       <View style={styles.expenseBlockBody}>
+        <View>
+          <Image
+            source={{ uri: item.imageUrl }}
+            style={styles.receiptImage}
+          />
+        </View>
         <View>
           <View>
             <Text>${item.amount}</Text>
@@ -70,8 +101,8 @@ class Expense extends Component {
         >
           <Text style={{color: '#ffffff'}}>Delete</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+      </View>*/}
+    </TouchableOpacity>
   )
 
   render() {

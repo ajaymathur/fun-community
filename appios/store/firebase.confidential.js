@@ -21,3 +21,5 @@ export const expenditureRef = database.ref('expendature');
 export const totalAmountRef = database.ref('totalAmount');
 
 export const eventsRef = database.ref('events');
+
+export const storageRef = firebase.storage();
