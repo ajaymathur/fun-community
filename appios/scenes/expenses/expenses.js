@@ -64,7 +64,7 @@ class Expense extends Component {
           style={styles.receiptImage}
         />
       </View>
-      <View>
+      <View style={styles.expenseDetail}>
         <View>
           <Text>{item.itemName}</Text>
         </View>
@@ -75,33 +75,6 @@ class Expense extends Component {
           <Text>{item.addedBy}</Text>
         </View>
       </View>
-
-
-      {/*<View style={styles.expenseBlockHeader}>
-        <Text>{item.itemName}</Text>
-      </View>
-      <View style={styles.expenseBlockBody}>
-        <View>
-          <Image
-            source={{ uri: item.imageUrl }}
-            style={styles.receiptImage}
-          />
-        </View>
-        <View>
-          <View>
-            <Text>${item.amount}</Text>
-          </View>
-          <View>
-            <Text>{item.addedBy}</Text>
-          </View>
-        </View>
-        <TouchableOpacity
-          style={styles.expenseBlockDeleteButton}
-          onPress={() => { }}
-        >
-          <Text style={{color: '#ffffff'}}>Delete</Text>
-        </TouchableOpacity>
-      </View>*/}
     </TouchableOpacity>
   )
 

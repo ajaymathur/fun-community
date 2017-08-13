@@ -3,11 +3,12 @@ import { View, TouchableOpacity } from 'react-native';
 import styles from './components/addButton/addButton.style';
 import { TabNavigator, StackNavigator, StackRouter } from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Birthdays from './components/birthdays/birthdays';
-import Expense from './components/expenses/expenses';
+import Birthdays from './scenes/birthdays/birthdays';
+import Expense from './scenes/expenses/expenses';
 import AddButton from './components/addButton/addButton';
-import AddExpense from './components/addExpense/addExpense';
-import ExpenseDetail from './components/expenseDetails/expenseDetails';
+import AddExpense from './scenes/addExpense/addExpense';
+import ExpenseDetail from './scenes/expenseDetails/expenseDetails';
+import About from './scenes/about/about';
 const BIRTHDAY_NAVIGATOR = StackNavigator(
   {
     BirthdayList: {
@@ -20,10 +21,18 @@ const BIRTHDAY_NAVIGATOR = StackNavigator(
   }
 );
 
+const ABOUT = StackNavigator({
+  About: {
+    screen: About,
+    path: 'about',
+    navigationOptions: {
+      title: 'About'
+    }
+  }
+});
+
 const EXPENSE_NAVIGATOR = StackNavigator(
   {
-
-
     ExpenseList: {
       screen: Expense,
       path: 'expence',
@@ -43,7 +52,7 @@ const EXPENSE_NAVIGATOR = StackNavigator(
       screen: AddExpense,
       path: 'expence/add',
       navigationOptions: {
-        title: 'How much did you spend?'
+        title: 'Add Expense'
       }
     },
     ExpenseDetail: {
@@ -72,6 +81,14 @@ export default TabNavigator(
       navigationOptions: {
         tabBarLabel: 'Birthday',
         tabBarIcon: ({ tintColor }) => <Icon name="birthday-cake" style={{ color: tintColor }}></Icon>
+      }
+    },
+    About: {
+      screen: ABOUT,
+      navigationOptions: {
+        title: 'About',
+        tabBarLabel: 'About',
+        tabBarIcon: ({ tintColor }) => <Icon name="circle" style={{ color: tintColor }}></Icon>
       }
     },
 

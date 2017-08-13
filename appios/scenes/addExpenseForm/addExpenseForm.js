@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableHighlight, Platform, Image } from 'react-native';
-
+import { ScrollView, View, Text, TextInput, TouchableHighlight, Platform, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePicker from 'react-native-image-picker'
 import RNFetchBlob from 'react-native-fetch-blob'
 
-import styles from './addexpenseForm.style';
+import styles from './addExpenseForm.style';
 
 import { expenditureRef, storageRef } from '../../store/firebase.confidential';
 
@@ -46,7 +46,9 @@ class AddExpenseForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      imageUri: ''
+    };
   }
 
   addExpense() {
@@ -71,7 +73,9 @@ class AddExpenseForm extends Component {
     this.setState({ uploadURL: '' });
 
     ImagePicker.showImagePicker({}, response => {
-      this.showImage(response.uri);
+      if(!response.didCancel) {
+        this.showImage(response.uri);
+      }
     })
   }
 
@@ -81,50 +85,49 @@ class AddExpenseForm extends Component {
     })
   }
 
+  getImageView() {
+    return (
+      this.state.imageUri ?
+        <View style={styles.imageBox}>
+          <Image
+            source={{ uri: this.state.imageUri }}
+            style={styles.image}
+          />
+        </View> :
+        <View style={styles.addImageBox}>
+          <TouchableHighlight
+            style={styles.loginButton}
+            onPress={() => this.pickImage()}
+          >
+            <Icon name="plus" style={styles.addImageIcon} />
+          </TouchableHighlight>
+        </View>
+    )
+  }
+
   render() {
     return (
-      <View>
+      <ScrollView style={styles.addExpenseForm}>
         <TextInput
           placeholder="Item"
-          style={styles.TextInput}
+          style={styles.textInput}
           onChangeText={(itemName) => this.setState({ itemName })}
         />
         <TextInput
           placeholder="amount"
           keyboardType="numeric"
-          style={styles.TextInput}
+          style={styles.textInput}
           onChangeText={(amount) => this.setState({ amount })}
         />
-        {
-          (() => {
-            switch (this.state.imageUri) {
-              case null:
-                return null
-              default:
-                return (
-                  <View>
-                    <Image
-                      source={{ uri: this.state.imageUri }}
-                      style={styles.image}
-                    />
-                  </View>
-                )
-            }
-          })()
-        }
+        {this.getImageView()}
+
         <TouchableHighlight
-          style={styles.loginButton}
-          onPress={() => this.pickImage()}
-        >
-          <Text>Add Image</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.loginButton}
+          style={styles.addExpenseButton}
           onPress={() => this.addExpense()}
         >
           <Text>Add</Text>
         </TouchableHighlight>
-      </View>
+      </ScrollView>
     )
   }
 }

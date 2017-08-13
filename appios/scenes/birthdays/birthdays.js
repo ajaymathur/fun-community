@@ -20,8 +20,8 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
 
 class Birthdays extends Component {
 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       filteredData: [],
     }
@@ -42,7 +42,7 @@ class Birthdays extends Component {
         items.push({
           title: months[month],
           birthdays: birthday,
-          key: month,
+          key: birthday + month,
         });
       });
       this.setState({
@@ -53,7 +53,7 @@ class Birthdays extends Component {
 
   getInnerList = ({ item }) => {
     return (
-      <View key={item.firstName} style={styles.listItems}>
+      <View key={item.date} style={styles.listItems}>
         <Text> {item.date} | {item.firstName} {item.lastName} </Text>
       </View>
     )
@@ -68,6 +68,7 @@ class Birthdays extends Component {
           </View>
           <FlatList
             data={item.birthdays}
+            key={item.date}
             renderItem={this.getInnerList}
           />
         </View>
