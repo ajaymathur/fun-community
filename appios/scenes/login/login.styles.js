@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     margin: 10,
   },
-  TextInput: {
+  textInput: {
     height: 40,
     borderBottomWidth: 4,
     padding: 4,
@@ -13,13 +13,20 @@ const styles = StyleSheet.create({
     borderColor: '#000000'
   },
   loginButton: {
-    backgroundColor: '#7d7d7d',
+    backgroundColor: '#dcdcdc',
     height: 40,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
     borderRadius: 10,
+  },
+  error: {
+    backgroundColor: '#ff715a'
+  },
+  errorMessage: {
+    margin: 10,
+    color: '#ff0000'
   }
 });
 

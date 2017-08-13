@@ -17,17 +17,17 @@ class AddExpense extends Component {
     this.doLogin = this.doLogin.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.isUserLoggedIn();
     //auth.signOut();
   }
 
   isUserLoggedIn() {
-    if (auth.currentUser) {
+    //if (auth.currentUser) {
       this.setState({
         loggedIn: true,
       })
-    }
+    //}
   }
 
   async doLogin(userName, password)  {
@@ -42,10 +42,11 @@ class AddExpense extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{flex: 1}}>
         {
           this.state.loggedIn ?
-            <AddExpenseForm /> :
+            <AddExpenseForm
+            /> :
             <Login
               doLogin={this.doLogin}
             />

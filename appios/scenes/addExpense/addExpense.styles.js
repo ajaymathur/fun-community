@@ -5,12 +5,14 @@ const styles = StyleSheet.create({
     fontSize: 40,
     margin: 10,
   },
-  TextInput: {
+  textInput: {
     height: 40,
     borderBottomWidth: 4,
     padding: 4,
     margin: 10,
-    borderColor: '#000000'
+    borderColor: '#000000',
+    backgroundColor: '#7d7d7d',
+    color: '#ff0000'
   },
   loginButton: {
     backgroundColor: '#7d7d7d',
@@ -20,6 +22,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 10,
     borderRadius: 10,
+  },
+  error: {
+    backgroundColor: '#ff0006'
   }
 });
 
